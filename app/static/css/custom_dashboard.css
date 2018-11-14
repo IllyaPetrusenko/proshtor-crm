@@ -14,3 +14,12 @@ a {
     -webkit-text-decoration-skip: objects;
 }
 
+.bg-light {
+    background-color: #dfdfdf!important;
+}
+
+@media (min-width: 768px)
+.d-md-block {
+    display: block!important;
+    margin-top: 1%;
+}

@@ -4,3 +4,4 @@ venv/
 app/.DS_Store
 app/actions/__pycache__/
 app/static/.DS_Store
+app/__pycache__/
