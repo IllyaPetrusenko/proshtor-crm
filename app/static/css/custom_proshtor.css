@@ -1,0 +1,10 @@
+.base-header {
+    display: inline-block;
+    background-color: #f6f7f9;
+}
+
+@media (min-width: 768px)
+.d-md-block {
+    display: block!important;
+    margin-top: 1%;
+}

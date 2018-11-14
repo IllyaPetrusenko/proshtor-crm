@@ -1,0 +1,7 @@
+Flask
+flask-wtf
+Flask-SQLAlchemy
+Flask-Migrate
+gunicorn
+requests
+
