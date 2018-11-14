@@ -36,6 +36,8 @@ class CreateNewUser:
 
 class DeleteSelectedUser:
 
-    @staticmethod
-    def delete_user():
-        pass
+    def __init__(self, id):
+        self.id = id
+
+    def delete_user(self):
+        db.session.delete()

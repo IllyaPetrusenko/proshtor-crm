@@ -28,12 +28,12 @@ def users():
     return render_template('dashboard.html', title='Клиенты', db_users=db_users)
 
 
-@app.route('/dashboard/new-user', methods=['GET', 'POST'])
-def new_user():
-    form = NewUser()
-    if form.validate_on_submit():
-        return redirect(url_for('/dashboard'))
-    return render_template('user.html', title='Создать нового пользователя', form=form)
+# @app.route('/dashboard/new-user', methods=['GET', 'POST'])
+# def new_user():
+#     form = NewUser()
+#     if form.validate_on_submit():
+#         return redirect(url_for('/dashboard'))
+#     return render_template('user.html', title='Создать нового пользователя', form=form)
 
 
 @app.route('/dashboard/users')
@@ -46,9 +46,7 @@ def users1():
 def contact_form_bot():
 
     if request.method == 'GET':
-        return '<h1>@proshtor_bot welcomes you</h1>' \
-           '<h2>To use this Bot please add him in your Telegram app</h2>' \
-           '<h3>@proshtor_bot is the name of the Bot</h3>'
+        return '111'
 
     elif request.method == 'POST':
 
@@ -56,3 +54,4 @@ def contact_form_bot():
 
     else:
         return make_response('404 Not Found, Incorrect', 404)
+
