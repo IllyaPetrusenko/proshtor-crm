@@ -7,7 +7,7 @@ app = Flask(__name__)
 
 # DB credentials
 user, password = 'illyapetrusenko1', '0445450232aA'
-host = 'https://illyapetrusenko1.mysql.pythonanywhere-services.com'
+host = 'illyapetrusenko1.mysql.pythonanywhere-services.com'
 db = 'illyapetrusenko1$proshtor' # dbFlask was created as a PythonAnywhere MySQL database
 
 # connection string: mysql://user:pword@host/db
