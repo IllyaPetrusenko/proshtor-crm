@@ -1,0 +1,6 @@
+venv/
+.DS_Store
+.idea/
+app/.DS_Store
+app/actions/__pycache__/
+app/static/.DS_Store
