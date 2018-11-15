@@ -1,7 +1,7 @@
 from flask import request, make_response
 import json, requests
-from app.actions.new_user import CreateNewUser
-
+# from app.actions.new_user import CreateNewUser
+from app.actions.user import User
 
 url = 'https://api.telegram.org/bot'
 proshtor_bot = '671845098:AAFhQbFKXuIb81GLzF0-gz5l67u6lTCWy54'
@@ -51,8 +51,8 @@ def send_data_to_subscribers():
                                                                      'ФИО: ' + fio + '\n',
                                                                      'Телефон: ' + phone))
 
-        new_user = CreateNewUser(fio, phone)
-        new_user.add_new_user_2_db()
+        new_user = User(fio, phone, 'null', 'null')
+        new_user.create_user()
         return make_response('201 Created', 201)
 
     else:

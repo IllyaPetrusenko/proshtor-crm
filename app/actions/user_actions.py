@@ -4,7 +4,7 @@ from app.models import pr_users
 
 class CreateNewUser:
 
-    def __init__(self, username=None, phone=None, email=None, role=None):
+    def __init__(self, username, phone, email, role):
         self.username = username
         self.phone = phone
         self.email = email
