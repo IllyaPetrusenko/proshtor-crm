@@ -52,6 +52,8 @@ def contact_form_bot():
 
         send_data_to_subscribers()
 
+        return make_response('201 Created', 201)
+
     else:
         return make_response('404 Not Found, Incorrect', 404)
 
