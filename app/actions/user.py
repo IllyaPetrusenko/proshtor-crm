@@ -28,5 +28,5 @@ def create_user(name, phone, email=None, role=1, password=None):
         return user
 
     else:
-        return "Пользователь не создан из-за системной ошибки!"
+        return False
 
