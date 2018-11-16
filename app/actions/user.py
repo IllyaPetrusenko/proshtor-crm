@@ -2,26 +2,31 @@ from app import db
 from app.models import pr_users
 
 
-class User:
+def create_user(name, phone, email=None, role=None, password=None):
 
-    def __init__(self, username, phone, email, role):
-        self.username = username
-        self.phone = phone
-        self.email = email
-        self.role = role
+    if not role and password:
 
-    def create_user(self):
-
-        db.session.add(pr_users(prus_name=self.username,
-                                prus_phone=self.phone,
-                                prus_email=self.email,
-                                prus_role_id=self.role))
+        role = 1
+        user = pr_users(prus_name=name,
+                        prus_email=email,
+                        prus_phone=phone,
+                        prus_role_id=role,
+                        prus_password_hash=password)
+        db.session.add(user)
         db.session.commit()
+        return user
 
-        return True
+    elif role and password:
 
-    def edit_user(self):
-        pass
+        user = pr_users(prus_name=name,
+                        prus_email=email,
+                        prus_phone=phone,
+                        prus_role_id=role,
+                        prus_password_hash=password)
+        db.session.add(user)
+        db.session.commit()
+        return user
 
-    def delete_user(self):
-        pass
+    else:
+        return "Пользователь не создан из-за системной ошибки!"
+

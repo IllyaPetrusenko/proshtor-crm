@@ -1,7 +1,7 @@
 from flask import request, make_response
 import json, requests
 # from app.actions.new_user import CreateNewUser
-from app.actions.user import User
+from app.actions.user import create_user
 
 url = 'https://api.telegram.org/bot'
 proshtor_bot = '671845098:AAFhQbFKXuIb81GLzF0-gz5l67u6lTCWy54'
@@ -24,7 +24,7 @@ def send_data_to_subscribers():
     r_token = data["data"]["token"]
 
     if r_token == proshtor_token:
-        fio = data["data"]["name"]
+        name = data["data"]["name"]
         phone = data["data"]["phone"][3:]
         phone = phone.replace(' ', '')
         phone = phone.replace('-', '')
@@ -38,21 +38,20 @@ def send_data_to_subscribers():
         # Message to Illia
         send_message_to_telega(chat_id_1, text='''{}{}{}{}'''.format('**************************************\n',
                                                                      'Новое обращение через форму обратной связи: \n',
-                                                                     'ФИО: ' + fio + '\n',
+                                                                     'ФИО: ' + name + '\n',
                                                                      'Телефон: ' + phone))
         # Message to Kirill
         send_message_to_telega(chat_id_2, text='''{}{}{}{}'''.format('**************************************\n',
                                                                      'Новое обращение через форму обратной связи: \n',
-                                                                     'ФИО: ' + fio + '\n',
+                                                                     'ФИО: ' + name + '\n',
                                                                      'Телефон: ' + phone))
         # Message to Anastasia
         send_message_to_telega(chat_id_3, text='''{}{}{}{}'''.format('**************************************\n',
                                                                      'Новое обращение через форму обратной связи: \n',
-                                                                     'ФИО: ' + fio + '\n',
+                                                                     'ФИО: ' + name + '\n',
                                                                      'Телефон: ' + phone))
 
-        new_user = User(fio, phone, 'null', 'null')
-        new_user.create_user()
+        create_user(name=name, phone=phone)
         return make_response('201 Created', 201)
 
     else:
