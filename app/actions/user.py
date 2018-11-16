@@ -12,4 +12,3 @@ def create_user(name, phone, email=None, role=None, password=None):
     db.session.add(user)
     db.session.commit()
     return True
-
