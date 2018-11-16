@@ -32,4 +32,3 @@ class pr_orders_state(db.Model):
     pros_id = db.Column(db.Integer, primary_key=True)
     pros_name = db.Column(db.String(64), index=True, unique=True)
 
-
