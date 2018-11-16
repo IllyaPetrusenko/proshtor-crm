@@ -2,7 +2,7 @@ from app import db
 from app.models import pr_users
 
 
-def create_user(name, phone, email=None, role=None, password=None):
+def create_user(name, phone, email=None, role=1, password=None):
 
     if not role and password:
 
