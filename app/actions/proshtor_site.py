@@ -18,52 +18,52 @@ def send_message_to_telega(chat_id, text='bla-bla'):
 
 def send_data_to_subscribers():
 
-    r = request.get_data()
-    r = r.decode('utf8').replace("'", '"')
-    data = json.loads(r)
-    r_token = data["data"]["token"]
+    try:
+        r = request.get_data()
+        r = r.decode('utf8').replace("'", '"')
+        data = json.loads(r)
+        r_token = data["data"]["token"]
 
-    if r_token:
+        if r_token:
 
-        if r_token == proshtor_token:
-            name = data["data"]["name"]
-            phone = data["data"]["phone"][3:]
-            phone = phone.replace(' ', '')
-            phone = phone.replace('-', '')
-            # Chat_id Illia
-            chat_id_1 = 137572705
-            # Chat_id Kirill
-            chat_id_2 = 90817624
-            # Chat_id Anastasia
-            chat_id_3 = 290137143
+            if r_token == proshtor_token:
+                name = data["data"]["name"]
+                phone = data["data"]["phone"][3:]
+                phone = phone.replace(' ', '')
+                phone = phone.replace('-', '')
+                # Chat_id Illia
+                chat_id_1 = 137572705
+                # Chat_id Kirill
+                chat_id_2 = 90817624
+                # Chat_id Anastasia
+                chat_id_3 = 290137143
 
-            # Message to Illia
-            send_message_to_telega(chat_id_1, text='''{}{}{}{}'''.format('**************************************\n',
-                                                                         'Новое обращение через форму обратной связи: \n',
-                                                                         'ФИО: ' + name + '\n',
-                                                                         'Телефон: ' + phone))
-            # Message to Kirill
-            send_message_to_telega(chat_id_2, text='''{}{}{}{}'''.format('**************************************\n',
-                                                                         'Новое обращение через форму обратной связи: \n',
-                                                                         'ФИО: ' + name + '\n',
-                                                                         'Телефон: ' + phone))
-            # Message to Anastasia
-            send_message_to_telega(chat_id_3, text='''{}{}{}{}'''.format('**************************************\n',
-                                                                         'Новое обращение через форму обратной связи: \n',
-                                                                         'ФИО: ' + name + '\n',
-                                                                         'Телефон: ' + phone))
+                # Message to Illia
+                send_message_to_telega(chat_id_1, text='''{}{}{}{}'''.format('**************************************\n',
+                                                                             'Новое обращение через форму обратной связи: \n',
+                                                                             'ФИО: ' + name + '\n',
+                                                                             'Телефон: ' + phone))
+                # Message to Kirill
+                send_message_to_telega(chat_id_2, text='''{}{}{}{}'''.format('**************************************\n',
+                                                                             'Новое обращение через форму обратной связи: \n',
+                                                                             'ФИО: ' + name + '\n',
+                                                                             'Телефон: ' + phone))
+                # Message to Anastasia
+                send_message_to_telega(chat_id_3, text='''{}{}{}{}'''.format('**************************************\n',
+                                                                             'Новое обращение через форму обратной связи: \n',
+                                                                             'ФИО: ' + name + '\n',
+                                                                             'Телефон: ' + phone))
 
-            create_user(name=name, phone=phone)
+                create_user(name=name, phone=phone)
 
-            return make_response('201 Created', 201)
+                return make_response('201 Created', 201)
 
-        elif r_token != proshtor_token:
+            elif r_token != proshtor_token:
 
-            return make_response('Incorrect token', 403)
+                return make_response('Incorrect token', 403)
 
-        else:
-            return make_response('Incorrect data', 422)
+            else:
+                return make_response('Incorrect data', 422)
 
-    else:
-
-        return make_response('You need to have a platform token.', 403)
+    except Exception as e:
+        return make_response(e, 422)
