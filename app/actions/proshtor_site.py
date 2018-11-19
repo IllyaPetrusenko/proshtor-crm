@@ -23,44 +23,47 @@ def send_data_to_subscribers():
     data = json.loads(r)
     r_token = data["data"]["token"]
 
-    if r_token == proshtor_token:
-        name = data["data"]["name"]
-        phone = data["data"]["phone"][3:]
-        phone = phone.replace(' ', '')
-        phone = phone.replace('-', '')
-        # Chat_id Illia
-        chat_id_1 = 137572705
-        # Chat_id Kirill
-        chat_id_2 = 90817624
-        # Chat_id Anastasia
-        chat_id_3 = 290137143
+    if r_token:
 
-        # Message to Illia
-        send_message_to_telega(chat_id_1, text='''{}{}{}{}'''.format('**************************************\n',
-                                                                     'Новое обращение через форму обратной связи: \n',
-                                                                     'ФИО: ' + name + '\n',
-                                                                     'Телефон: ' + phone))
-        # Message to Kirill
-        send_message_to_telega(chat_id_2, text='''{}{}{}{}'''.format('**************************************\n',
-                                                                     'Новое обращение через форму обратной связи: \n',
-                                                                     'ФИО: ' + name + '\n',
-                                                                     'Телефон: ' + phone))
-        # Message to Anastasia
-        send_message_to_telega(chat_id_3, text='''{}{}{}{}'''.format('**************************************\n',
-                                                                     'Новое обращение через форму обратной связи: \n',
-                                                                     'ФИО: ' + name + '\n',
-                                                                     'Телефон: ' + phone))
+        if r_token == proshtor_token:
+            name = data["data"]["name"]
+            phone = data["data"]["phone"][3:]
+            phone = phone.replace(' ', '')
+            phone = phone.replace('-', '')
+            # Chat_id Illia
+            chat_id_1 = 137572705
+            # Chat_id Kirill
+            chat_id_2 = 90817624
+            # Chat_id Anastasia
+            chat_id_3 = 290137143
 
-        create_user(name=name, phone=phone)
-        return make_response('201 Created', 201)
+            # Message to Illia
+            send_message_to_telega(chat_id_1, text='''{}{}{}{}'''.format('**************************************\n',
+                                                                         'Новое обращение через форму обратной связи: \n',
+                                                                         'ФИО: ' + name + '\n',
+                                                                         'Телефон: ' + phone))
+            # Message to Kirill
+            send_message_to_telega(chat_id_2, text='''{}{}{}{}'''.format('**************************************\n',
+                                                                         'Новое обращение через форму обратной связи: \n',
+                                                                         'ФИО: ' + name + '\n',
+                                                                         'Телефон: ' + phone))
+            # Message to Anastasia
+            send_message_to_telega(chat_id_3, text='''{}{}{}{}'''.format('**************************************\n',
+                                                                         'Новое обращение через форму обратной связи: \n',
+                                                                         'ФИО: ' + name + '\n',
+                                                                         'Телефон: ' + phone))
 
-    elif r_token != proshtor_token:
+            create_user(name=name, phone=phone)
 
-        return make_response('403, Incorrect token', 403)
+            return make_response('201 Created', 201)
 
-    elif not r_token:
+        elif r_token != proshtor_token:
 
-        return make_response('403, You need to have a platform token.', 403)
+            return make_response('Incorrect token', 403)
+
+        else:
+            return make_response('Incorrect data', 422)
 
     else:
-        return make_response('405, Method not allowed', 405)
+
+        return make_response('You need to have a platform token.', 403)
