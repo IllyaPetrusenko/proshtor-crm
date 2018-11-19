@@ -54,8 +54,13 @@ def send_data_to_subscribers():
         create_user(name=name, phone=phone)
         return make_response('201 Created', 201)
 
-    elif r_token is None:
+    elif r_token != proshtor_token:
+
         return make_response('403, Incorrect token', 403)
+
+    elif not r_token:
+
+        return make_response('403, You need to have a platform token.', 403)
 
     else:
         return make_response('405, Method not allowed', 405)
