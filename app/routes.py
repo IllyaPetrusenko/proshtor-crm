@@ -44,11 +44,10 @@ def users():
 
 
 
-@app.route('/dashboard/users/edit/<user_id>', methods=['GET', 'POST'])  # Страница "Редактирование клиентской записи"
+@app.route('/dashboard/users/edit/<user_id>', methods=['GET'])  # Страница "Редактирование клиентской записи"
 def user_edit_page(user_id):
 
-    if request.method == 'GET':
-        db_user = db.pr_users.query.filter_by(id=user_id).first()
+    db_user = db.pr_users.query.filter_by(id=user_id).first()
     return render_template('user_edit_page.html', title='Редактирование клиентской записи', user_info=db_user)
 
 
