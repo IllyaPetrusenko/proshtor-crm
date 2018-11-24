@@ -3,15 +3,15 @@
 {% block content %}
 <h2>{{ title }}</h2>
     <tr>
-        <td>{{ db_user.prus_id if db_user.prus_id else ' - ' }}</td>
-        <td>{{ db_user.prus_name if db_user.prus_name != 'None' else ' - ' }}</td>
-        <td>{{ db_user.prus_email if db_user.prus_email != 'None' else ' - ' }}</td>
-        <td>{{ db_user.prus_phone if db_user.prus_phone != 'None' else ' - ' }}</td>
-        <td>{{ db_user.prus_date_created }}</td>
-        <td>{{ db_user.prus_date_modified }}</td>
+        <td>{{ user_info.prus_id if db_user.prus_id else ' - ' }}</td>
+        <td>{{ user_info.prus_name if db_user.prus_name != 'None' else ' - ' }}</td>
+        <td>{{ user_info.prus_email if db_user.prus_email != 'None' else ' - ' }}</td>
+        <td>{{ user_info.prus_phone if db_user.prus_phone != 'None' else ' - ' }}</td>
+        <td>{{ user_info.prus_date_created }}</td>
+        <td>{{ user_info.prus_date_modified }}</td>
         <td>
             <button>
-                <a href="/dashboard/users/edit/{{ db_user.prus_id }}">Редактировать</a>
+                <a href="/dashboard/users/edit/{{ user_info.prus_id }}">Редактировать</a>
             </button>
             <button>delete</button>
         </td>
