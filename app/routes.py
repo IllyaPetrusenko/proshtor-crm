@@ -5,6 +5,7 @@ from app.forms import LoginForm, NewUser
 from app.actions.index import users_page
 from app.actions.proshtor_site import send_data_to_subscribers
 from app import db
+from app.models import pr_users
 
 
 @app.route('/')
@@ -46,8 +47,7 @@ def users():
 
 @app.route('/dashboard/users/edit/<int:user_id>', methods=['GET'])  # Страница "Редактирование клиентской записи"
 def user_edit_page(user_id):
-
-    db_user = db.pr_users.query.filter_by(id=user_id).first()
+    db_user = db.session.query(pr_users).filter_by(id=user_id).first()
     return render_template('user_edit_page.html', title='Редактирование клиентской записи', user_info=db_user)
 
 
