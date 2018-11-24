@@ -4,7 +4,6 @@
 {% block content %}
 <h2>{{ title }} : "{{ user_info.prus_name }}"</h2>
     <tr>
-        <td>{{ user_info.prus_id if user_info.prus_id else ' - ' }}</td>
         <td>{{ user_info.prus_name if user_info.prus_name != 'None' else ' - ' }}</td>
         <td>{{ user_info.prus_email if user_info.prus_email != 'None' else ' - ' }}</td>
         <td>{{ user_info.prus_phone if user_info.prus_phone != 'None' else ' - ' }}</td>
