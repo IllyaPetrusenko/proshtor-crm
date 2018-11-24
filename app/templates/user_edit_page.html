@@ -9,11 +9,5 @@
         <td>{{ user_info.prus_phone if user_info.prus_phone != 'None' else ' - ' }}</td>
         <td>{{ user_info.prus_date_created }}</td>
         <td>{{ user_info.prus_date_modified }}</td>
-        <td>
-            <button>
-                <a href="/dashboard/users/edit/{{ user_info.prus_id }}">Редактировать</a>
-            </button>
-            <button>delete</button>
-        </td>
     </tr>
 {% endblock %}
