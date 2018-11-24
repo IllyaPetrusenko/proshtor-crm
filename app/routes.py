@@ -47,7 +47,7 @@ def users():
 
 @app.route('/dashboard/users/edit/<int:user_id>', methods=['GET'])  # Страница "Редактирование клиентской записи"
 def user_edit_page(user_id):
-    db_user = db.session.query(pr_users).filter_by(id=user_id).first()
+    db_user = db.session.query(pr_users).filter_by(prus_id=user_id).first()
     return render_template('user_edit_page.html', title='Редактирование клиентской записи', user_info=db_user)
 
 
