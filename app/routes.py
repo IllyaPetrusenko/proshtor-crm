@@ -44,7 +44,7 @@ def users():
 
 
 
-@app.route('/dashboard/users/edit/<user_id>', methods=['GET'])  # Страница "Редактирование клиентской записи"
+@app.route('/dashboard/users/edit/<int:user_id>', methods=['GET'])  # Страница "Редактирование клиентской записи"
 def user_edit_page(user_id):
 
     db_user = db.pr_users.query.filter_by(id=user_id).first()
