@@ -38,11 +38,10 @@ def dashboard_clear():
 #     return render_template('user.html', title='Создать нового пользователя', form=form)
 
 
-@app.route('/dashboard/users')  # Страница "Пользователи"
+@app.route('/dashboard/users')  # Страница "Клиенты"
 def users():
     db_users = users_page()
-    return render_template('users.html', title='Клиенты', db_users=db_users)\
-
+    return render_template('users.html', title='Клиенты', db_users=db_users)
 
 
 @app.route('/edit/<int:user_id>', methods=['GET'])  # Страница "Редактирование клиентской записи"
