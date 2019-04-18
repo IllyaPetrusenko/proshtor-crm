@@ -73,16 +73,16 @@ def run_catalogues_cron():
     if request.method == 'GET':
 
         r = requests.get('http://www.dzo.byustudio.in.ua/cron/importCatalog.php?run=mCtXCFeMPbhQjiHt')
-        time.sleep(250)
         r = r.status_code
         if r == 200:
             condition = 'Success!'
             send_report_to_subscribers(condition)
+            resp = make_response('200 OK', 200)
         else:
             condition = 'Fail!'
             send_report_to_subscribers(condition)
-
-        return make_response('200 OK', 200)
+            resp = make_response('503', 503)
+        return resp
 
     else:
         return make_response('405 Method not allowed', 405)
