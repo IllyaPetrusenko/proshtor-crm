@@ -81,7 +81,7 @@ def run_catalogues_cron():
 
         send_report_to_subscribers(condition)
 
-        return make_response('200 OK', 200)
+        return r
 
     else:
         return make_response('405 Method not allowed', 405)
