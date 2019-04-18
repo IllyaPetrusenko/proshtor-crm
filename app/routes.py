@@ -73,7 +73,7 @@ def run_catalogues_cron():
     if request.method == 'GET':
 
         r = requests.get('http://www.dzo.byustudio.in.ua/cron/importCatalog.php?run=mCtXCFeMPbhQjiHt')
-        time.sleep(150)
+        time.sleep(250)
         r = r.status_code
         if r == 200:
             condition = 'Success!'
