@@ -4,7 +4,7 @@ import requests, time
 from app import app
 from app.forms import LoginForm, NewUser
 from app.actions.index import users_page
-from app.actions.proshtor_site import send_data_to_subscribers, send_report_to_subscribers
+from app.actions.proshtor_site import send_data_to_subscribers, make_resp
 from app import db
 from app.models import pr_users
 
@@ -74,16 +74,11 @@ def run_catalogues_cron():
 
         r = requests.get('http://www.dzo.byustudio.in.ua/cron/importCatalog.php?run=mCtXCFeMPbhQjiHt')
         r = r.status_code
-        if r == 200:
-            condition = 'Success!'
-            send_report_to_subscribers(condition)
-            resp = make_response('200 OK', 200)
-        else:
-            condition = 'Fail!'
-            send_report_to_subscribers(condition)
-            resp = make_response('503', 503)
-        return resp
+
+        resp = make_resp(r)
 
     else:
-        return make_response('405 Method not allowed', 405)
+        resp = make_response('405 Method not allowed', 405)
+
+    return resp
 

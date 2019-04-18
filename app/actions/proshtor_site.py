@@ -74,3 +74,14 @@ def send_report_to_subscribers(condition):
     chat_id_1 = 137572705
     send_message_to_telega(chat_id_1, text=condition)
 
+
+def make_resp(r):
+    if r == 200:
+        condition = 'Success!'
+        send_report_to_subscribers(condition)
+        resp = make_response('200 OK', 200)
+    else:
+        condition = 'Fail!'
+        send_report_to_subscribers(condition)
+        resp = make_response('503', 503)
+    return resp
