@@ -76,10 +76,10 @@ def run_catalogues_cron():
         r = r.status_code
         if r == 200:
             condition = 'Success!'
+            send_report_to_subscribers(condition)
         else:
             condition = 'Fail!'
-
-        send_report_to_subscribers(condition)
+            send_report_to_subscribers(condition)
 
         return make_response('200 OK', 200)
 
