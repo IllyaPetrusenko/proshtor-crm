@@ -3,7 +3,7 @@ from flask import render_template, flash, redirect, url_for, request, make_respo
 from app import app
 from app.forms import LoginForm, NewUser
 from app.actions.index import users_page
-from app.actions.proshtor_site import send_data_to_subscribers
+from app.actions.proshtor_site import send_data_to_subscribers, send_report_to_subscribers
 from app import db
 from app.models import pr_users
 
@@ -64,4 +64,17 @@ def contact_form_bot():
 
     else:
         return make_response('404 Not Found, Incorrect', 404)
+
+
+@app.route('/dzo-crontab', methods=['GET'])
+def run_catalogues_cron():
+
+    if request.method == 'GET':
+
+        send_report_to_subscribers()
+
+        return make_response('200 OK', 200)
+
+    else:
+        return make_response('405 Method not allowed', 405)
 

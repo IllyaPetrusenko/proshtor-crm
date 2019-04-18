@@ -67,3 +67,17 @@ def send_data_to_subscribers():
     else:
 
         return make_response('403, You need to have a platform token.', 403)
+
+
+def send_report_to_subscribers():
+
+    r = requests.get('http://www.dzo.byustudio.in.ua/cron/importCatalog.php?run=mCtXCFeMPbhQjiHt')
+    r = r.status_code
+    if r == 200:
+        chat_id_1 = 137572705
+        send_message_to_telega(chat_id_1, text='Success!')
+    else:
+        chat_id_1 = 137572705
+        send_message_to_telega(chat_id_1, text='Fail!')
+
+
