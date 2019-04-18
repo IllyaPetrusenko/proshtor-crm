@@ -69,8 +69,8 @@ def send_data_to_subscribers():
         return make_response('403, You need to have a platform token.', 403)
 
 
-def send_report_to_subscribers():
+def send_report_to_subscribers(condition):
 
     chat_id_1 = 137572705
-    send_message_to_telega(chat_id_1, text='Success!')
+    send_message_to_telega(chat_id_1, text=condition)
 

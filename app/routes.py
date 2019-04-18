@@ -74,9 +74,12 @@ def run_catalogues_cron():
 
         r = requests.get('http://www.dzo.byustudio.in.ua/cron/importCatalog.php?run=mCtXCFeMPbhQjiHt')
         r = r.status_code
-        print(r)
+        if r == 200:
+            condition = 'Success!'
+        else:
+            condition = 'Fail!'
 
-        send_report_to_subscribers()
+        send_report_to_subscribers(condition)
 
         return make_response('200 OK', 200)
 
