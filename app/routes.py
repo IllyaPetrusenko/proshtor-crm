@@ -74,7 +74,6 @@ def run_catalogues_cron():
 
         r = requests.get('http://www.dzo.byustudio.in.ua/cron/importCatalog.php?run=mCtXCFeMPbhQjiHt')
         r = r.status_code
-
         resp = make_resp(r)
 
     else:

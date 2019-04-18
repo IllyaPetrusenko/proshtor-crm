@@ -76,12 +76,15 @@ def send_report_to_subscribers(condition):
 
 
 def make_resp(r):
+
     if r == 200:
         condition = 'Success!'
         send_report_to_subscribers(condition)
         resp = make_response('200 OK', 200)
+
     else:
         condition = 'Fail!'
         send_report_to_subscribers(condition)
-        resp = make_response('503', 503)
+        resp = make_response('ERROR')
+
     return resp
