@@ -31,7 +31,7 @@ def send_data_to_subscribers():
             phone = phone.replace(' ', '')
             phone = phone.replace('-', '')
             # Chat_id Illia
-            # chat_id_1 = 137572705
+            chat_id_1 = 137572705
             # Chat_id Kirill
             chat_id_2 = 90817624
             # Chat_id Anastasia
@@ -40,10 +40,10 @@ def send_data_to_subscribers():
             chat_id_4 = 629448042
 
             # Message to Illia
-            # send_message_to_telega(chat_id_1, text='''{}{}{}{}'''.format('**************************************\n',
-            #                                                              'Новое обращение через форму обратной связи: \n',
-            #                                                              'ФИО: ' + name + '\n',
-            #                                                              'Телефон: ' + phone))
+            send_message_to_telega(chat_id_1, text='''{}{}{}{}'''.format('**************************************\n',
+                                                                         'Новое обращение через форму обратной связи: \n',
+                                                                         'ФИО: ' + name + '\n',
+                                                                         'Телефон: ' + phone))
             # Message to Kirill
             send_message_to_telega(chat_id_2, text='''{}{}{}{}'''.format('**************************************\n',
                                                                          'Новое обращение через форму обратной связи: \n',
