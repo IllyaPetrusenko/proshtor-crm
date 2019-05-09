@@ -36,6 +36,8 @@ def send_data_to_subscribers():
             chat_id_2 = 90817624
             # Chat_id Anastasia
             chat_id_3 = 290137143
+            # Chat_id Proshtor
+            chat_id_4 = 629448042
 
             # Message to Illia
             send_message_to_telega(chat_id_1, text='''{}{}{}{}'''.format('**************************************\n',
@@ -49,6 +51,12 @@ def send_data_to_subscribers():
                                                                          'Телефон: ' + phone))
             # Message to Anastasia
             send_message_to_telega(chat_id_3, text='''{}{}{}{}'''.format('**************************************\n',
+                                                                         'Новое обращение через форму обратной связи: \n',
+                                                                         'ФИО: ' + name + '\n',
+                                                                         'Телефон: ' + phone))
+
+            # Message to Proshtor channel
+            send_message_to_telega(chat_id_4, text='''{}{}{}{}'''.format('**************************************\n',
                                                                          'Новое обращение через форму обратной связи: \n',
                                                                          'ФИО: ' + name + '\n',
                                                                          'Телефон: ' + phone))
